@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,7 +40,7 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Shavaiz Hussain</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Shavaiz Hussain</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,10 +51,10 @@
                     <a class="nav-link" href="#">Twitter <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Resume</a>
+                    <a class="nav-link" href="{% static 'shavaiz.pdf' %}">Resume</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="{% url 'blog' %}">Blog</a>
 
 
             </ul>
@@ -65,7 +66,7 @@
 <div class="container">
 <h1 class="text-center">Welcome to Shavaiz's Posts</h1>
     {% for blog in blog.all %}
-        <a href=""><h1 class="text-center pt-3">{{ blog.title }}</h1> </a>
+        <a href="{% url 'detail' blog.id %}"><h1 class="text-center pt-3">{{ blog.title }}</h1> </a>
         <p class="text-center pt-3">{{blog.short }}</p>
         {{ blog.cool_date }}
         <br>
